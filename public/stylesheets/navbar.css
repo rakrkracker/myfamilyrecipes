@@ -1,0 +1,31 @@
+#navbar {
+    position: sticky; top: 0;
+    z-index: 100;
+    /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+    box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+}
+
+#navbar .navbar {
+    background: white !important;
+}
+
+#navbar .navbar * {
+    color: black;
+}
+
+#navbar .navbar-brand {
+    font-family: 'Ribeye Marrow', cursive;
+    color: rgb(217, 152, 152);
+}
+
+#navbar #links {
+    margin-left: auto;
+}
+
+#navbar #links .nav-last-word {
+    margin-right: 100px;
+}
+
+#navbar #links *:hover {
+    color: rgb(179, 125, 125);
+}

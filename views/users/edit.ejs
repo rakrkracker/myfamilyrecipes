@@ -1,0 +1,82 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="user">
+        <div id="edit">
+            <div id="notepad" class="mx-auto pt-4 pb-5">
+                <img src="/media/images/sketchpad.png">
+                <div id="page">
+                    <div class="card card-body">
+                        <form action="/users/<%= user._id %>?_method=PUT" method="POST" class="pt-2 pb-4 px-5"
+                            enctype="multipart/form-data">
+                            <h1 class="text-center card-title mb-3 title">Edit Profile</h1>
+
+                            <!-- Name -->
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" id="username"
+                                    value="<%= user.username %>">
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" class="form-control" name="email" id="email"
+                                    value="<%= user.email %>">
+                            </div>
+
+                            <!-- Description -->
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Description</label>
+                                <br>
+                                <textarea class="w-100" name="description" id="description"
+                                    rows="2"><%= user.description %></textarea>
+                            </div>
+
+                            <!-- Image -->
+                            <label for="image" class="form-label">Profile Image</label>
+                            <div class="mb-3">
+                                <div class="mx-auto">
+
+                                    <!-- Upload image input-->
+                                    <div id="upload-frame" class="input-group mb-3">
+                                        <input id="upload" type="file" id="image" name="image" onchange="readURL(this)"
+                                            class="form-control">
+                                        <label id="upload-label" for="upload"
+                                            class="font-weight-light text-muted">Choose
+                                            Image</label>
+                                        <div class="input-group-append">
+                                            <label for="upload" class="btn btn-light m-0"><small
+                                                    class="text-uppercase fw-bold text-muted">
+                                                    <i class="fa fa-upload fa-lg"></i>
+                                                </small></label>
+                                        </div>
+                                    </div>
+
+                                    <!-- Uploaded image area-->
+                                    <div class="image-area mt-4">
+                                        <img id="imageResult" class="img-fluid rounded shadow-sm mx-auto d-block">
+                                    </div>
+                                </div>
+
+                                <!-- Existing image -->
+                                <div class="mb-3">
+                                    <% if (user.image) { %>
+                                        <% user.image.forEach(img=> { %>
+                                            <img src="<%= img.url %>" class="img-thumbnail mb-3">
+                                            <% }); %>
+                                                <% } %>
+                                </div>
+                            </div>
+
+                            <!-- Submit -->
+                            <button class="btn mb-3 mt-4">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- JS Scripts -->
+    <script src="/javascripts/updateUser.js"></script>

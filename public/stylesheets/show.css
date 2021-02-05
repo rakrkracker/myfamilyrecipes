@@ -1,0 +1,49 @@
+#show {
+    background-image: url('../media/images/fire.jpg');
+    background-size: cover;
+}
+
+#show #instructions * {
+    color: white;
+    background: transparent;
+}
+
+#show #info-card {
+    border-radius: 35px;
+}
+
+#show #img-carousel-controls img {
+    height: 11rem;
+    width: 65%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+#show #img-carousel-controls .carousel-control-prev-icon,
+#show #img-carousel-controls .carousel-control-next-icon {
+    filter: invert(1);
+}
+
+#show #tabs {
+    background-color: rgb(217, 152, 152);
+    max-width: 10rem;
+    border-radius: 30px;
+}
+
+#show .nav-pills * {
+    color: black;
+}
+
+#show .nav-pills .active {
+    background-color: white;
+    width: 100%;
+    height: 0;
+    pad: 0;
+    padding-bottom: 70%;
+    border-radius: 50%;
+}
+
+#show #add-post button {
+    background-color: rgb(217, 152, 152);
+    color: white;
+}

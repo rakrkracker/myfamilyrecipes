@@ -1,0 +1,108 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="index">
+
+        <!-- Hero content -->
+        <div class="p-5 mb-5 hero">
+            <div class="container py-5">
+                <h3 class="fs-2">What do you want to eat today?</h3>
+
+                <!-- Search -->
+                <div class="mb-3">
+                    <div class="align-items-center">
+
+                        <!-- Search Bar -->
+                        <div class="d-flex align-items-center">
+                            <div id="search-bar" class="input-group position-relative me-2">
+                                <input id="search-value" type="search" class="form-control" placeholder="Search..." />
+                                <button id="search-btn" class="position-absolute top-50 end-0 translate-middle-y"
+                                    onclick="addFilter()">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+
+                            <!-- Filter -->
+                            <div class="align-items-center">
+                                <div id="carouselControls" class="carousel slide" data-bs-ride="carousel"
+                                    data-bs-interval="false">
+                                    <div id="search-category" class="carousel-inner" role="listbox">
+                                        <div class="carousel-item active text-center p-4">
+                                            <p class="m-0">All Categories</p>
+                                        </div>
+                                        <div class="carousel-item text-center p-4">
+                                            <p class="m-0">Chef</p>
+                                        </div>
+                                        <div class="carousel-item text-center p-4">
+                                            <p class="m-0">Title</p>
+                                        </div>
+                                        <div class="carousel-item text-center p-4">
+                                            <p class="m-0">Ingredient</p>
+                                        </div>
+                                        <div class="carousel-item text-center p-4">
+                                            <p class="m-0">Time</p>
+                                        </div>
+                                    </div>
+                                    <a class="carousel-control-prev" href="#carouselControls" role="button"
+                                        data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#carouselControls" role="button"
+                                        data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filters -->
+                <h5 id="filters-title" class="invisible">My preferences</h5>
+                <div id="filters" class="d-flex flex-wrap"></div>
+            </div>
+        </div>
+
+        <!-- Recipes -->
+        <div class="container mb-5">
+            <% if (recipes.length> 0) { %>
+                <h3>Try these out</h3>
+
+                <!-- Recipe Grid -->
+                <div class="d-flex flex-wrap mb-3">
+                    <% for (let recipe of recipes) { %>
+                        <div class="card p-2 m-2 border-0 recipe-card">
+                            <a class="border-0" href="/recipes/<%= recipe._id %>">
+
+                                <!-- Image -->
+                                <img src="<%= recipe.imageUrl %>" class="card-img-top">
+
+                                <!-- Text -->
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%= recipe.title %>
+                                    </h5>
+                                    <div class="card-text d-flex justify-content-between recipe-info">
+                                        <span>By <%= recipe.chef.username %></span>
+                                        <span>
+                                            <%= recipe.time %>
+                                        </span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% } %>
+                </div>
+                <% } else { %>
+                    <h3>No recipes found</h3>
+                    <% } %>
+        </div>
+    </div>
+
+
+    <!-- JS Scripts -->
+    <script type="text/javascript">
+        const recipes = <%- JSON.stringify(recipes) %>;
+    </script>
+    <script src="/javascripts/index.js"></script>

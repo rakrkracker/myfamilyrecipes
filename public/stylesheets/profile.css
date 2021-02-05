@@ -1,0 +1,27 @@
+#user #profile .edit-icon {
+    color: black;
+}
+
+#user #profile #recipes .edit-icon:hover {
+    color: rgb(217, 152, 152);
+}
+
+#user #profile #recipes a {
+    text-decoration: none;
+}
+
+#user #profile #recipes .recipe-card {
+    border: none;
+}
+
+#user #profile #recipes .recipe-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} 
+
+#user #profile #recipes .recipe-card * {
+    color: black;
+}
+
+#user #profile #recipes .recipe-card .recipe-time {
+    color: rgba(0, 0, 0, 0.6);
+}

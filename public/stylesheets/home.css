@@ -1,0 +1,24 @@
+#home .user-stripe {
+    border: none;
+}
+
+#home .user-stripe:nth-child(odd) .stripe-text {
+    background-image: url('../media/images/wood.jpg');
+    background-size: cover;
+}
+
+#home .user-stripe:nth-child(odd) * {
+    color: white;
+    text-decoration: none;
+}
+
+#home .user-stripe:nth-child(even) * {
+    color: black;
+    text-decoration: none;
+}
+
+#home .user-stripe img {
+    object-fit: cover;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    min-height: 15rem;
+}

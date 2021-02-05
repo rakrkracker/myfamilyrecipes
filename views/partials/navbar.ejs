@@ -1,0 +1,24 @@
+<div id="navbar">
+    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+        <div class="container">
+
+            <!-- Logo -->
+            <a class="navbar-brand primary" href="#">FamilyRecipes</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div id="links" class="navbar-nav">
+                    <a class="nav-link" href="/">Chefs</a>
+                    <a class="nav-link nav-last-word" href="/recipes">Recipes</a>
+                    <a class="nav-link" href="/users/<%= currentUser ? currentUser._id : "login" %>">
+                        <i class="fa fa-user-circle fa-lg"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>

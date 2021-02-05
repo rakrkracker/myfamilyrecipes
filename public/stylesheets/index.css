@@ -1,0 +1,61 @@
+#index .hero {
+    background-image: url('../media/images/table_eat.jpg');
+    background-size: cover;
+    background-position: 0% 15%;
+
+    height: 23rem;
+}
+
+#index .hero * {
+    color: white;
+}
+
+#index #search-bar {
+    width: 15rem;
+    height: 2.5rem;
+}
+
+#index #search-value {
+    border-width: 0;
+    border-color: white;
+    border-bottom-width: 3px;
+    padding-left: 0;
+
+    color: white;
+    background-color: transparent;
+}
+
+#index #search-value::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+}
+
+#index #search-btn {
+    border-width: 0;
+
+    color: white;
+    background-color: transparent;
+}
+
+#index .recipe-card {
+    max-width: 18rem;
+}
+
+#index .recipe-card:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+} 
+
+#index .recipe-card * {
+    text-decoration: none;
+    color: black;
+}
+
+#index .recipe-card .recipe-info * {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#index .filter,
+#index .filter:hover {
+    background-color: rgba(217, 152, 152, 0.9);
+    color: white;
+    border-radius: 0;
+}

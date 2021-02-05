@@ -1,0 +1,3 @@
+#user #update-recipe ul:empty {
+    display: none;
+}

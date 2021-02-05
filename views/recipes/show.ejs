@@ -1,0 +1,174 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="show">
+        <div class="container pt-4 pb-5">
+            <div class="row">
+
+                <!-- Instructions -->
+                <div id="instructions" class="col-md-7 p-3 order-2 order-md-1">
+
+                    <!-- Title -->
+                    <h1>
+                        <%= recipe.title %>
+                    </h1>
+
+                    <!-- Description -->
+                    <p class="lead">
+                        <%= recipe.description %>
+                    </p>
+
+                    <!-- Steps -->
+                    <ul class="list-group list-group-flush">
+                        <% for (let [index, step] of recipe.steps.entries()) { %>
+                            <li class="list-group-item">
+                                <h5>Step <%= index + 1 %>
+                                </h5>
+                                <div class="ps-4">
+                                    <p>
+                                        <%= step %>
+                                    </p>
+                                </div>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+
+                <!-- Info Card -->
+                <div class="col-md-5 mb-3 order-1 order-md-2">
+                    <div id="info-card" class="card card-body">
+
+                        <!-- Tabs -->
+                        <ul id="tabs" class="nav nav-pills mx-auto justify-content-center align-items-center px-3 py-1"
+                            role="tablist">
+
+                            <!-- Info Tab -->
+                            <li class="nav-item" role="presentation">
+                                <a id="info-tab" class="nav-link active position-relative" data-bs-toggle="pill"
+                                    href="#info" role="tab" aria-controls="info" aria-selected="true">
+                                    <i class="fa fa-info fa-lg position-absolute top-50 start-50 translate-middle"></i>
+                                </a>
+                            </li>
+
+                            <div class="p-2"></div>
+
+                            <!-- Posts Tab -->
+                            <li class="nav-item">
+                                <a id="posts-tab" class="nav-link position-relative" data-bs-toggle="pill" href="#posts"
+                                    role="tab" aria-controls="posts" aria-selected="false">
+                                    <i class="fa fa-comments fa-lg position-absolute top-50 start-50 translate-middle"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+
+                        <!-- Tab Content -->
+                        <div class="tab-content px-3 py-2">
+
+                            <!-- Info View -->
+                            <div id="info" class="tab-pane fade show active" role="tabpanel" aria-labelledby="info-tab">
+
+                                <!-- Chef -->
+                                <div class="d-flex align-items-center pb-1">
+                                    <i class="fa fa-smile-o fa-2x"></i>
+                                    <span class="fs-6 ps-3">
+                                        <%= recipe.chef.username %>
+                                    </span>
+                                </div>
+
+                                <!-- Time -->
+                                <div class="d-flex align-items-center pb-1">
+                                    <i class="fa fa-clock-o fa-2x"></i>
+                                    <span class="fs-6 ps-3">
+                                        <%= recipe.time %>
+                                    </span>
+                                </div>
+
+                                <!-- Ingredients -->
+                                <div class="my-3">
+                                    <h5>Ingredients</h5>
+                                    <ul class="list-group list-group-flush">
+                                        <% for (let ing of recipe.ingredients) { %>
+                                            <li class="list-group-item">
+                                                <%= ing %>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                </div>
+
+                                <!-- Images -->
+                                <div id="img-carousel-controls" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <% for (let [index, img] of recipe.images.entries()) { %>
+                                            <% if (index===0 ) { %>
+                                                <div class="carousel-item active">
+                                                    <img src="<%= img.url %>" class="d-block mx-auto">
+                                                </div>
+                                            <% } else { %>
+                                                <div class="carousel-item">
+                                                    <img src="<%= img.url %>" class="d-block mx-auto">
+                                                </div>
+                                            <% } %>
+                                        <% } %>
+                                    </div>
+                                    <% if (recipe.images.length> 1) { %>
+                                        <a class="carousel-control-prev" href="#img-carousel-controls" role="button"
+                                            data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </a>
+                                        <a class="carousel-control-next" href="#img-carousel-controls" role="button"
+                                            data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </a>
+                                    <% } %>
+                                </div>
+                            </div>
+
+                            <!-- Posts View -->
+                            <div id="posts" class="tab-pane fade" role="tabpanel" aria-labelledby="posts-tab">
+
+                                <!-- Posts -->
+                                <% if (recipe.posts.length> 0) { %>
+                                    <ul class="list-group list-group-flush">
+                                        <% for (let post of recipe.posts) { %>
+                                            <li class="list-group-item">
+                                                <p class="fw-bold">
+                                                    <%= post.author.username %>
+                                                </p>
+                                                <p>
+                                                    <%= post.body %>
+                                                </p>
+                                            </li>
+                                        <% } %>
+                                    </ul>
+                                <% } else { %>
+                                    <% if (currentUser) { %>
+                                        <h5>Be the first to comment...</h5>
+                                    <% } else { %>
+                                        <h5>No comments...</h5>
+                                    <% } %>
+                                <% } %>
+                                <% if (currentUser) { %>
+
+                                    <!-- Add Post -->
+                                    <form id="add-post" class="my-3"
+                                        action="/recipes/<%= recipe._id %>/posts" method="POST">
+                                        <textarea class="w-100" name="post[body]" id="body"
+                                            rows="3" required></textarea>
+                                        <button class="btn w-100">Post</button>
+                                    </form>
+                                <% } else { %>
+                                    <div class="my-3">
+                                        <a href="/users/login">
+                                            Login to comment...
+                                        </a>
+                                    </div>
+                                <% } %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

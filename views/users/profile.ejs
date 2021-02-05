@@ -1,0 +1,111 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="user">
+        <div id="profile">
+            <div id="notepad" class="mx-auto pt-4 pb-5">
+                <img src="/media/images/sketchpad.png">
+                <div id="page">
+                    <div class="card card-body">
+                        <div id="profile-form" class="pt-2 pb-4 px-5">
+
+                            <!-- Profile Header -->
+                            <div class="row mb-3 p-3">
+
+                                <!-- Image -->
+                                <div class="col-4">
+                                    <div class="position-relative">
+                                        <img src="<%= user.imageUrl %>">
+
+                                        <% if (currentUser && currentUser._id.equals(user._id)) { %>
+                                            <div class="position-absolute bottom-0 end-0 invisible">
+                                                <i class="fa fa-edit fa-lg edit-icon p-1"></i>
+                                            </div>
+                                        <% } %>
+                                    </div>
+                                </div>
+
+                                <!-- Text -->
+                                <div class="col-8">
+
+                                    <!-- Name -->
+                                    <p class="fw-bold">
+                                        <%= user.username %>
+                                    </p>
+
+                                    <!-- Description -->
+                                    <p id="description" class="position-relative">
+                                        <%= user.description %>
+                                        <% if (currentUser && currentUser._id.equals(user._id)) { %>
+                                            <i class="fa fa-edit fa-lg edit-icon position-absolute bottom-0 end-0 invisible"></i>
+                                        <% } %>
+                                    </p>
+                                </div>
+
+                                <!-- Edit user button -->
+                                <% if (currentUser && currentUser._id.equals(user._id)) { %>
+                                    <a href="/users/<%= user._id %>/edit">
+                                        <button class="btn">Edit User Info</button>
+                                    </a>
+                                <% } %>
+                            </div>
+
+                            <!-- Recipes -->
+                            <div id="recipes" class="mb-3">
+                                <div class="d-flex mb-3 align-items-center">
+                                    <h5 class="m-0 title">Recipes</h5>
+                                    <% if (currentUser && currentUser._id.equals(user._id)) { %>
+                                        <a href="/recipes/new" class="edit-icon">
+                                            <i class="fa fa-plus fa ms-2 "></i>
+                                        </a>
+                                    <% } %>
+                                </div>
+                                <% if (recipes.length > 0) { %>
+                                    <div class="ps-2">
+                                        <% for (let recipe of recipes) { %>
+                                            <a href="/recipes/<%= recipe._id %>">
+                                                <div class="card mb-2 p-2 position-relative recipe-card">
+                                                    <div class="row g-0">
+
+                                                        <!-- Image -->
+                                                        <div class="col-4">
+                                                            <img src="<%= recipe.imageUrl %>">
+                                                        </div>
+
+                                                        <!-- Text -->
+                                                        <div class="col-8 card-body py-0 d-flex flex-column
+                                                        justify-content-between">
+                                                            <h5 class="card-title">
+                                                                <%= recipe.title %>
+                                                            </h5>
+                                                            <span class="card-text recipe-time">
+                                                                <%= recipe.time %>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Edit icon -->
+                                                    <% if (currentUser && currentUser._id.equals(user._id)) { %>
+                                                        <a href="/recipes/<%= recipe._id %>/edit"
+                                                            class="position-absolute bottom-0 end-0 p-2">
+                                                            <i class="fa fa-edit fa-lg edit-icon"></i>
+                                                        </a>
+                                                    <% } %>
+                                                </div>
+                                            </a>
+                                        <% } %>
+                                    </div>
+                                <% } %>
+                            </div>
+
+                            <!-- Logout button -->
+                            <% if (currentUser && currentUser._id.equals(user._id)) { %>
+                                <a href="/users/<%= user._id %>/logout">
+                                    <button class="btn">Logout</button>
+                                </a>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

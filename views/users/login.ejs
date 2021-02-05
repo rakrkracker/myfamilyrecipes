@@ -1,0 +1,40 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="user" class="vh-100">
+        <div id="login">
+            <div id="notepad" class="mx-auto pt-4">
+                <img src="/media/images/sketchpad.png">
+                <div id="page">
+                    <div class="card card-body">
+                        <form action="/users/login" method="POST" class="py-4 px-5">
+
+                            <!-- Title -->
+                            <h1 class="text-center card-title mb-3 title">Login</h1>
+
+                            <!-- Username -->
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Username</label>
+                                <input type="text" class="form-control" name="username" id="username">
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Password</label>
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+
+                            <!-- Retrieve Password -->
+                            <div class="mb-3 invisible">
+                                <a href="#" class="card-link">Forgot password?</a>
+                            </div>
+
+                            <!-- Submit -->
+                            <div class="pt-3 pb-5">
+                                <button class="btn">Login</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

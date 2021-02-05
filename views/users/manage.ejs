@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="p-5">
+        <!-- Users list -->
+        <ul class="list-group list-group-flush">
+            <% for (let user of users) { %>
+                <li class="list-group-item">
+                    <div class="row">
+                        <!-- Name -->
+                        <div class="col-1">
+                            <span>
+                                <%= user.username %>
+                            </span>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="col-2">
+                            <span>
+                                <%= user.email %>
+                            </span>
+                        </div>
+
+                        <!-- Edit -->
+                        <div class="col-1">
+                            <a href="/users/<%= user._id %>/edit">
+                                <i class="fa fa-edit fa-lg"></i>
+                            </a>
+                        </div>
+
+                        <!-- Delete -->
+                        <div class="col-1">
+                            <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+                                <button>
+                                    <i class="fa fa-trash fa-lg"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                <% } %>
+
+                    <li class="list-group-item">
+
+                        <!-- Add user -->
+                        <a href="/users/new">
+                            <i class="fa fa-plus fa-lg"></i>
+                        </a>
+                    </li>
+        </ul>
+
+
+    </div>

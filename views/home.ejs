@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+    <div id="home">
+
+        <!-- Chef cards -->
+        <ul class="list-group">
+            <% for (let [index, user] of users.entries()) { %>
+                <li class="list-group-item p-0 user-stripe">
+                    <a href="users/<%= user._id %>">
+                        <div class="row">
+                            <% if (index % 2 === 0) { %>
+
+                                <!-- Image (on left) -->
+                                <div class="col-md-3 p-0 order-1">
+                                    <img src="<%= user.imageUrl %>" class="img-fluid w-100">
+                                </div>
+                            <% } %>
+                            <div class="col-md-9 p-5 order-2 stripe-text">
+
+                                <!-- Name -->
+                                <h3 class="fs-2">
+                                    <%= user.username %>
+                                </h3>
+
+                                <!-- Description (quote) -->
+                                <p class="lead fs-4">
+                                    <%= user.description %>
+                                </p>
+                            </div>
+                            <% if (index % 2 === 1) { %>
+
+                                <!-- Image (on right) -->
+                                <div class="col-md-3 p-0 order-1 order-md-3">
+                                    <img src="<%= user.imageUrl %>" class="img-fluid w-100">
+                                </div>
+                            <% } %>
+                        </div>
+                    </a>
+                </li>
+            <% } %>
+        </ul>
+    </div>

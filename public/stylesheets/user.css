@@ -1,0 +1,96 @@
+#user {
+    background-image: url('../media/images/table_cook.jpg');
+    background-size: cover;
+
+    width: 100%;
+    height: 100%;
+}
+
+#user #notepad {
+    width: 35rem;
+}
+
+#user #notepad #page {
+    border-radius: 0;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-top: none;
+}
+
+#user #notepad img {
+    width: 100%;
+}
+
+#user #notepad button {
+    width: 100%;
+    background-color: rgb(217, 152, 152);
+    color: white;
+    border-radius: 0;
+}
+
+#user #notepad .title {
+    color: rgb(217, 152, 152);
+}
+
+#user #notepad .form-control {
+    border-radius: 0;
+}
+
+#user #notepad .form-label {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Upload image */
+#user #upload {
+    opacity: 0;
+}
+
+#user #upload-frame {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+#user #upload-label {
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+}
+
+#user .image-area {
+    border: 2px dashed rgba(0, 0, 0, 0.7);
+    padding: 1rem;
+    position: relative;
+}
+
+#user .image-area::before {
+    content: 'Uploaded image';
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    z-index: 1;
+}
+
+#user .image-area img {
+    z-index: 2;
+    position: relative;
+}
+
+
+/* Media Queries */
+@media (max-width: 600px) {
+    #user #notepad {
+        width: 100%;
+    }
+
+    #user form {
+        padding: 0 !important;
+    }
+
+    #user #profile-form {
+        padding: 0 !important;
+    }
+}
