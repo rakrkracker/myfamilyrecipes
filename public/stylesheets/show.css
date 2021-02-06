@@ -1,15 +1,34 @@
 #show {
-    background-image: url('../media/images/fire.jpg');
+    /* background-image: url('../media/images/fire.jpg'); */
+    /* opacity: 0.5;
+    background-size: cover; */
+    position: relative;
+}
+
+#show::after {
+    content: "";
+    /* background-image: url('../media/images/fire.jpg'); */
+    background: url('../media/images/baking.jpg');
     background-size: cover;
+    opacity: 0.2;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
 }
 
 #show #instructions * {
-    color: white;
+    color: black;
     background: transparent;
 }
 
 #show #info-card {
     border-radius: 35px;
+    border: none;
+    box-shadow: 0 0 8px rgba(1, 1, 1, 0.1);
 }
 
 #show #img-carousel-controls img {

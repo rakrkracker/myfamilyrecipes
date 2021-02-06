@@ -64,7 +64,7 @@ function addStep() {
     const deleteButton = document.createElement("i");
     deleteButton.classList.add("fa");
     deleteButton.classList.add("fa-close");
-    // deleteButton.classList.add("fa-lg");
+    deleteButton.classList.add("fa-lg");
     deleteButton.classList.add("ms-2");
     deleteButton.onclick = function () {
         deleteStep(index);
