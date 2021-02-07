@@ -107,7 +107,7 @@ function updateRecipes() {
 }
 
 function isChefValid(recipes, chef) {
-    return Array.from(recipes, recipe => recipe.chef.username.toLowerCase().includes(chef));
+    return Array.from(recipes, recipe => recipe.chef.displayname.toLowerCase().includes(chef));
 }
 
 function isTitleValid(recipes, title) {

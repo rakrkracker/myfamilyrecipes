@@ -1,13 +1,10 @@
 #show {
-    /* background-image: url('../media/images/fire.jpg'); */
-    /* opacity: 0.5;
-    background-size: cover; */
     position: relative;
 }
 
 #show::after {
     content: "";
-    /* background-image: url('../media/images/fire.jpg'); */
+    /* background-image: url('../media/images/baking-sheet.jpg'); */
     background: url('../media/images/baking.jpg');
     background-size: cover;
     opacity: 0.2;

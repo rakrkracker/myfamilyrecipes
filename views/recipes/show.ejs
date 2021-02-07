@@ -71,7 +71,7 @@
                                 <div class="d-flex align-items-center pb-1">
                                     <i class="fa fa-smile-o fa-2x"></i>
                                     <span class="fs-6 ps-3">
-                                        <%= recipe.chef.username %>
+                                        <%= recipe.chef.displayname %>
                                     </span>
                                 </div>
 
@@ -99,7 +99,7 @@
                                 <div id="img-carousel-controls" class="carousel slide" data-bs-ride="carousel">
                                     <div class="carousel-inner">
                                         <% for (let [index, img] of recipe.images.entries()) { %>
-                                            <% if (index===0 ) { %>
+                                            <% if (index === 0 ) { %>
                                                 <div class="carousel-item active">
                                                     <img src="<%= img.url %>" class="d-block mx-auto">
                                                 </div>
@@ -110,7 +110,7 @@
                                             <% } %>
                                         <% } %>
                                     </div>
-                                    <% if (recipe.images.length> 1) { %>
+                                    <% if (recipe.images.length > 1) { %>
                                         <a class="carousel-control-prev" href="#img-carousel-controls" role="button"
                                             data-bs-slide="prev">
                                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -134,7 +134,7 @@
                                         <% for (let post of recipe.posts) { %>
                                             <li class="list-group-item">
                                                 <p class="fw-bold">
-                                                    <%= post.author.username %>
+                                                    <%= post.author.displayname %>
                                                 </p>
                                                 <p>
                                                     <%= post.body %>

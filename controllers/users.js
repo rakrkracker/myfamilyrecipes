@@ -32,10 +32,10 @@ module.exports.renderNew = (req, res) => {
 
 module.exports.createUser = async (req, res) => {
     // Get data
-    const { username, email, description, password } = req.body;
+    const { username, displayname, description, password } = req.body;
 
     // Update user
-    const user = new User({ username, email, description });
+    const user = new User({ username, displayname, description });
 
     // Register user
     await User.register(user, password);
@@ -138,6 +138,9 @@ module.exports.deleteUser = async (req, res) => {
 module.exports.logout = (req, res) => {
     // Logout
     req.logout();
+
+    // Delete session
+    req.session.destroy();
 
     // Redirect to home
     res.redirect('/');

@@ -6,10 +6,9 @@ const { ImageSchema } = require('./image');
 
 // Schema
 const userSchema = new Schema({
-    email: {
+    displayname: {
         type: String,
         required: true,
-        unique: true
     },
     description: String,
     images: [ImageSchema],
