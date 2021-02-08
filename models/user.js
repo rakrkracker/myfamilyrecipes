@@ -12,6 +12,7 @@ const userSchema = new Schema({
     },
     description: String,
     images: [ImageSchema],
+    isAdmin: Boolean
 });
 
 

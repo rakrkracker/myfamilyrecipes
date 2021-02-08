@@ -63,3 +63,8 @@
     background-color: rgb(217, 152, 152);
     color: white;
 }
+
+#show .delete-post button {
+    border: none;
+    background-color: transparent;
+}

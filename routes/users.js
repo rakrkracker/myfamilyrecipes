@@ -6,32 +6,33 @@ const passport = require('passport');
 const multer = require('multer');
 const { storage } = require('../cloudinary/index');
 const upload = multer({ storage });
+const { isAdmin, isUserOwner, isLoggedIn } = require('../middleware');
 
 
 // Define routes
 router.route('/')
-    .post(upload.array('image'), catchAsync(usersController.createUser));
+    .post(isLoggedIn, isAdmin, upload.array('image'), catchAsync(usersController.createUser));
 
 router.route('/login')
     .get(usersController.renderLogin)
     .post(passport.authenticate('local', { failureRedirect: '/users/login' }), usersController.login);
 
 router.route('/manage')
-    .get(catchAsync(usersController.renderManage));
+    .get(isLoggedIn, isAdmin, catchAsync(usersController.renderManage));
 
 router.route('/new')
-    .get(usersController.renderNew);
+    .get(isLoggedIn, usersController.renderNew);
 
 router.route('/:id')
     .get(catchAsync(usersController.renderProfile))
-    .put(upload.array('image'), catchAsync(usersController.updateProfile))
-    .delete(catchAsync(usersController.deleteUser));
+    .put(isLoggedIn, isUserOwner, upload.array('image'), catchAsync(usersController.updateProfile))
+    .delete(isLoggedIn, isUserOwner, catchAsync(usersController.deleteUser));
 
 router.route('/:id/edit')
-    .get(catchAsync(usersController.renderEdit));
+    .get(isLoggedIn, isUserOwner, catchAsync(usersController.renderEdit));
 
 router.route('/:id/logout')
-    .get(usersController.logout);
+    .get(isLoggedIn, usersController.logout);
 
 
 // Export routes

@@ -1,4 +1,5 @@
 const Recipe = require('../models/recipe');
+const Post = require('../models/post');
 const { cloudinary } = require('../cloudinary/index');
 
 
@@ -68,20 +69,48 @@ module.exports.updateRecipe = async (req, res) => {
 
     recipe.chef = user._id;
 
+    // Delete images if necessary
+    if (recipe.images.length > 0) {
+        for (let image of recipe.images) {
+            await cloudinary.uploader.destroy(image.filename);
+        }
+
+        await recipe.updateOne({ $pull: { images: {} } });
+    }
+
+    // Add new images
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
     recipe.images.push(...imgs);
 
     // Save recipe
     await recipe.save();
 
-    // Delete images if necessary
-    if (req.body.deleteImages) {
-        for (let filename of data.deleteImages) {
-            await cloudinary.uploader.destroy(filename);
+    // Redirect to profile
+    res.redirect(`/users/${user._id}`);
+};
+
+module.exports.deleteRecipe = async (req, res) => {
+    // Get data
+    const { id } = req.params;
+
+    // Find recipe and user
+    const recipe = await Recipe.findById(id);
+    const user = res.locals.currentUser;
+
+    // Delete images
+    if (recipe.images.length > 0) {
+        for (let image of recipe.images) {
+            await cloudinary.uploader.destroy(image.filename);
         }
 
-        await recipe.updateOne({ $pull: { images: { filename: { $in: data.deleteImages } } } });
+        await recipe.updateOne({ $pull: { images: {} } });
     }
+
+    // Delete posts
+    await Post.deleteMany({ _id: { $in: recipe.posts } });
+
+    // Delete recipe
+    await Recipe.findByIdAndRemove(id);
 
     // Redirect to profile
     res.redirect(`/users/${user._id}`);

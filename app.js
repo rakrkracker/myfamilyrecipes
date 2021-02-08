@@ -113,7 +113,10 @@ app.use('/recipes/:id/posts', postsRoutes);
 
 
 app.get('/', async (req, res) => {
-    const users = await User.find({});
+    // Get users and sort alphabetically
+    const users = await User.find({}).sort({displayname: "asc"});
+
+    // Render home page (chefs)
     res.render('home', { users });
 });
 

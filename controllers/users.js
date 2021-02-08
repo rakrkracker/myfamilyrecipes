@@ -36,6 +36,7 @@ module.exports.createUser = async (req, res) => {
 
     // Update user
     const user = new User({ username, displayname, description });
+    user.isAdmin = false;
 
     // Register user
     await User.register(user, password);
@@ -106,7 +107,7 @@ module.exports.deleteUser = async (req, res) => {
     // Get parameters
     const { id } = req.params;
 
-    // Get user and associated recipes and posts
+    // Get user and associated recipes
     const user = await User.findById(id);
     const recipes = await Recipe.find({ chef: user._id });
 
@@ -123,10 +124,10 @@ module.exports.deleteUser = async (req, res) => {
     }
 
     // Delete recipes from database
-    Recipe.deleteMany({ chef: user._id });
+    await Recipe.deleteMany({ chef: user._id });
 
     // Delete posts
-    Post.deleteMany({ author: user._id });
+    await Post.deleteMany({ author: user._id });
 
     // Delete user
     await User.findByIdAndRemove(user._id);

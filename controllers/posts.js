@@ -20,3 +20,17 @@ module.exports.createPost = async (req, res) => {
     // Redirect to recipe page
     res.redirect(`/recipes/${recipe._id}`);
 };
+
+module.exports.deletePost = async (req, res) => {
+    // Get data
+    const { id, postId } = req.params;
+
+    // Delete post from recipe
+    await Recipe.updateOne({ _id: id }, { $pull: { posts: postId } });
+
+    // Delete post
+    await Post.findByIdAndRemove(postId);
+
+    // Redirect to recipe page
+    res.redirect(`/recipes/${id}`);
+};

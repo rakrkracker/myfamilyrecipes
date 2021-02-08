@@ -25,3 +25,9 @@
 #user #profile #recipes .recipe-card .recipe-time {
     color: rgba(0, 0, 0, 0.6);
 }
+
+#user #profile #recipes .delete-recipe button {
+    background-color: transparent;
+    border: none;
+    width: auto;
+}

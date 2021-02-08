@@ -83,12 +83,22 @@
                                                         </div>
                                                     </div>
 
-                                                    <!-- Edit icon -->
+                                                    <!-- Manage recipe -->
                                                     <% if (currentUser && currentUser._id.equals(user._id)) { %>
-                                                        <a href="/recipes/<%= recipe._id %>/edit"
-                                                            class="position-absolute bottom-0 end-0 p-2">
-                                                            <i class="fa fa-edit fa-lg edit-icon"></i>
-                                                        </a>
+
+                                                        <!-- Edit -->
+                                                        <div class="position-absolute bottom-0 end-0 m-2">
+                                                            <a href="/recipes/<%= recipe._id %>/edit">
+                                                                <i class="fa fa-edit fa-lg edit-icon me-2"></i>
+                                                            </a>
+
+                                                            <!-- Delete -->
+                                                            <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST" class="d-inline delete-recipe">
+                                                                <button class="p-0 m-0">
+                                                                    <i class="fa fa-trash fa-lg edit-icon"></i>
+                                                                </button>
+                                                            </form>
+                                                        </div>
                                                     <% } %>
                                                 </div>
                                             </a>
