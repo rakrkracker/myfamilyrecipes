@@ -1,6 +1,6 @@
 <% layout('layouts/boilerplate') %>
 
-    <div id="user">
+    <div id="user" class="page">
         <div id="update-recipe">
             <div id="notepad" class="mx-auto pt-4 pb-5">
                 <img src="/media/images/sketchpad.png" alt="">
@@ -37,7 +37,7 @@
                                 <% for (let [index, ing] of recipe.ingredients.entries()) { %>
                                     <li id="ingredient-<%= index %>" class="list-group-item">
                                         <%= ing %>
-                                        <i class="fa fa-close fa-lg ms-2" onclick="deleteIngredient(<%- index -%>)"></i>
+                                        <i class="fa fa-close fa-lg ms-2 clickable" onclick="deleteIngredient(<%- index -%>)"></i>
                                     </li>
                                 <% } %>
                             </ul>
@@ -56,7 +56,7 @@
                                 <% for (let [index, step] of recipe.steps.entries()) { %>
                                     <li id="step-<%= index %>" class="list-group-item">
                                         <%= step %>
-                                        <i class="fa fa-close fa-lg ms-2" onclick="deleteStep(<%- index -%>)"></i>
+                                        <i class="fa fa-close fa-lg ms-2 clickable" onclick="deleteStep(<%- index -%>)"></i>
                                     </li>
                                 <% } %>
                             </ul>
