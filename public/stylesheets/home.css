@@ -1,24 +1,62 @@
-#home .user-stripe {
-    border: none;
+#home {
+    background-image: url('../media/images/table_empty.jpg');
 }
 
-#home .user-stripe:nth-child(odd) .stripe-text {
-    background-image: url('../media/images/wood.jpg');
-    background-size: cover;
-}
-
-#home .user-stripe:nth-child(odd) * {
-    color: white;
+#home .users * {
     text-decoration: none;
-}
-
-#home .user-stripe:nth-child(even) * {
     color: black;
-    text-decoration: none;
 }
 
-#home .user-stripe img {
-    object-fit: cover;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    min-height: 15rem;
+#home .user-stripe {
+    display: inline-flex;
+    width: 200px;
+
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    position: absolute;
+}
+
+#home .user-stripe:hover {
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out;
+    left: 0;
+}
+
+#home .user-stripe .text {
+    padding: 40px 70px;
+    min-width: 350px;
+    flex: 1;
+
+    background-color: white;
+}
+
+#home .user-stripe .image {
+    max-width: 200px;
+    border: 3px solid white;
+}
+
+
+/* Breakpoints */
+@media (min-width: 640px){
+        #home .user-stripe {
+            width: 450px;
+
+            left: -350px;
+        }
+    }
+     
+@media (min-width: 768px){
+    #home .user-stripe {
+        width: 650px;
+
+        left: -450px;
+    }
+}
+     
+@media (min-width: 1024px){
+    #home .user-stripe {
+        width: 900px;
+
+        left: -700px;
+    }
 }
