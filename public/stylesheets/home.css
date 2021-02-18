@@ -37,26 +37,29 @@
 
 
 /* Breakpoints */
-@media (min-width: 640px){
-        #home .user-stripe {
-            width: 450px;
+/* Without touch screen */
+@media (hover: hover) {
+    @media (min-width: 640px) {
+            #home .user-stripe {
+                width: 450px;
 
-            left: -350px;
+                left: -350px;
+            }
+        }
+        
+    @media (min-width: 839px) {
+        #home .user-stripe {
+            width: 650px;
+
+            left: -450px;
         }
     }
-     
-@media (min-width: 768px){
-    #home .user-stripe {
-        width: 650px;
+        
+    @media (min-width: 1024px) {
+        #home .user-stripe {
+            width: 900px;
 
-        left: -450px;
-    }
-}
-     
-@media (min-width: 1024px){
-    #home .user-stripe {
-        width: 900px;
-
-        left: -700px;
+            left: -700px;
+        }
     }
 }
