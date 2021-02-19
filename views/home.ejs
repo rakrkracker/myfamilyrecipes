@@ -5,26 +5,57 @@
         <!-- Chef cards -->
         <div class="users py-4">
             <% for (let [index, user] of users.entries()) { %>
-                <a href="users/<%= user._id %>">
-                    <div class="user-stripe my-2">
-                        
-                            <!-- Text -->
-                            <div class="text">
-                                <!-- Name -->
-                                <h2 class="name">
-                                    <%= user.displayname %>
-                                </h2>
+                <a href="" id="user-<%= index %>-recipe-link">
 
-                                <!-- Description -->
-                                <p class="description">
-                                    <%= user.description %>
-                                </p>
+                    <div id="user-<%= index %>" class="user-stripe my-2" onmouseover="getRandChefRecipes();">
+
+                        <!-- Text -->
+                        <div class="text">
+
+                            <!-- Name -->
+                            <h2 class="name">
+                                <%= user.displayname %>
+                            </h2>
+
+                            <!-- Description -->
+                            <p class="description">
+                                <%= user.description %>
+                            </p>
+                        </div>
+
+                        <!-- Recipe text -->
+                        <div class="recipe-text">
+
+                            <!-- Title -->
+                            <h2 class="title"></h2>
+
+                            <!-- Description -->
+                            <p class="description"></p>
+                        </div>
+
+                        <!-- Image + recipes -->
+                        <div class="d-flex info">
+
+                            <!-- Recipes -->
+                            <div class="recipe">
+
+                                <!-- Image -->
+                                <img src="" class="image">
                             </div>
 
                             <!-- Image -->
                             <img class="image" src="<%= user.imageUrl %>">
+                        </div>
                     </div>
                 </a>
             <% } %>
         </div>
     </div>
+
+
+    <!-- JS scrips -->
+    <script type="text/javascript">
+        const users = <%- JSON.stringify(users) %>;
+        const recipes = <%- JSON.stringify(recipes) %>;
+    </script>
+    <script src="/javascripts/home.js"></script>

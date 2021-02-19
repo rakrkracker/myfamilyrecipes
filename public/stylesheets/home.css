@@ -4,36 +4,91 @@
 
 #home .users * {
     text-decoration: none;
-    color: black;
+    color: white;
+    font-weight: bold;
 }
 
 #home .user-stripe {
     display: inline-flex;
-    width: 200px;
+    height: 200px;
+    /* width: 1200px; */
+    min-width: 600px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+    border-radius: 0 5px 5px 0;
 
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
+    width: 600px;
+}
+
+#home .user-stripe:hover > .text {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+#home .user-stripe:hover > .recipe-text {
+    opacity: 1;
+    transition: opacity 0.3s linear 0.3s;
+}
+
+#home .user-stripe:hover > .info > .image {
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+#home .user-stripe:hover > .info > .recipe > .image {
+    opacity: 1;
+    transition: opacity 0.3s linear 0.3s;
+}
+
+#home .user-stripe > .text {
+    /* margin-left: auto; */
+    padding: 40px 70px;
+    flex: 1;
+
+    opacity: 1;
+    transition: opacity 0.3s linear 0.3s;
+
+    margin-left: 250px;
+}
+
+#home .user-stripe > .recipe-text {
+    margin-left: 250px;
+    padding: 40px 70px;
+    flex: 1;
+    position: absolute;
+
+    opacity: 0;
+    transition: opacity 0.2s linear;
+}
+
+#home .user-stripe > .info {
+    width: 600px;
     position: absolute;
 }
 
-#home .user-stripe:hover {
-    transition-duration: 0.3s;
-    transition-timing-function: ease-in-out;
-    left: 0;
-}
-
-#home .user-stripe .text {
-    padding: 40px 70px;
-    min-width: 350px;
-    flex: 1;
-
-    background-color: white;
-}
-
-#home .user-stripe .image {
+#home .user-stripe > .info > .image {
     max-width: 200px;
     max-height: 200px;
-    border: 3px solid white;
+
+    border-radius: 5px;
+
+    padding: 3px;
+    margin-left: 100px;
+
+    opacity: 1;
+    transition: opacity 0.3s linear 0.3s;
+}
+
+#home .user-stripe > .info > .recipe > .image {
+    max-width: 200px;
+    max-height: 200px;
+
+    position: absolute;
+    margin-left: 100px; 
+
+    opacity: 0;
+    transition: opacity 0.2s linear;
 }
 
 
@@ -41,26 +96,69 @@
 /* Without touch screen */
 @media (hover: hover) {
     @media (min-width: 640px) {
-            #home .user-stripe {
-                width: 450px;
-
-                left: -350px;
-            }
+        #home .user-stripe {
+            width: 600px;
         }
+
+        #home .user-stripe > .text {
+            margin-left: 250px;
+        }
+    }
         
     @media (min-width: 839px) {
-        #home .user-stripe {
-            width: 650px;
+        #home .user-stripe:hover > .info {
+            left: 0;
+        }
 
-            left: -450px;
+        #home .user-stripe:hover > .info > .image {
+            opacity: 1;
+        }
+
+        #home .user-stripe {
+            position: static;
+            width: 800px;
+        }
+
+        #home .user-stripe > .info {
+            width: 800px;
+            left: -500px;
+            transition: left 0.3s ease;
+        }
+
+        #home .user-stripe > .text {
+            margin-left: 270px;
+        }
+        
+        #home .user-stripe > .recipe-text {
+            margin-left: 270px;
+        }
+
+        #home .user-stripe > .info > .image {
+            margin-left: auto;
+            opacity: 1;
+        }
+
+        #home .user-stripe > .info > .recipe > .image {
+            opacity: 1;
         }
     }
         
     @media (min-width: 1024px) {
         #home .user-stripe {
-            width: 900px;
+            width: 1000px;
+        }
 
+        #home .user-stripe > .info {
+            width: 1000px;
             left: -700px;
+        }
+
+        #home .user-stripe > .text {
+            margin-left: 300px;
+        }
+        
+        #home .user-stripe > .recipe-text {
+            margin-left: 300px;
         }
     }
 }

@@ -17,6 +17,7 @@ const LocalStrategy = require('passport-local');
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require("helmet");
 const User = require('./models/user');
+const Recipe = require('./models/recipe');
 
 
 // Connect to database
@@ -114,10 +115,13 @@ app.use('/recipes/:id/posts', postsRoutes);
 
 app.get('/', async (req, res) => {
     // Get users and sort alphabetically
-    const users = await User.find({}).sort({displayname: "asc"});
+    const users = await User.find({}).sort({ displayname: "asc" });
+
+    // Get recipes
+    const recipes = await Recipe.find({});
 
     // Render home page (chefs)
-    res.render('home', { users });
+    res.render('home', { users, recipes });
 });
 
 app.all('*', (req, res, next) => {
