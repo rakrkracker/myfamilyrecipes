@@ -27,47 +27,38 @@
         background-color: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(5px);
 
-        height: 350px;
-        width: 100%;
         border-radius: 5px;
 
         padding: 30px;
+
+        flex-direction: column;
+    }
+
+    #home .user-stripe > .chef {
+        display: inline-flex;
+        margin-bottom: 30px;
     }
 
     #home .user-stripe > .recipe {
-        height: 190px;
-        left: 0;
-        top: 160px;
-
-        padding: 0 30px 30px 30px;
+        position: static;
+        display: inline-flex;
     }
     
-    #home .user-stripe > .text {
-        margin-left: 100px;
+    #home .user-stripe > .chef > .text {
         padding: 5px 30px;
         flex: 1;
     }
     
     #home .user-stripe > .recipe > .recipe-text {
-        margin-left: 160px;
         padding: 10px 30px;
         flex: 1;
-        position: absolute;
-    }
-    
-    #home .user-stripe > .image {
-        position: absolute;
     }
 
-    #home .user-stripe > .image > img {
+    #home .user-stripe > .chef > .image > img {
         max-width: 100px;
         max-height: 100px;
     
         border-radius: 5px;
-    }
-    
-    #home .user-stripe > .recipe > .recipe-image {
-        position: absolute;
     }
 
     #home .user-stripe > .recipe > .recipe-image > img {
@@ -92,7 +83,7 @@
         border-radius: 0 5px 5px 0;
     }
     
-    #home .user-stripe:hover > .text {
+    #home .user-stripe:hover > .chef > .text {
         opacity: 0;
         transition: opacity 0.2s linear;
     }
@@ -102,7 +93,7 @@
         transition: opacity 0.3s linear 0.3s;
     }
     
-    #home .user-stripe:hover > .image {
+    #home .user-stripe:hover > .chef > .image {
         opacity: 0;
         transition: opacity 0.2s linear;
     }
@@ -112,7 +103,7 @@
         transition: opacity 0.3s linear 0.3s;
     }
     
-    #home .user-stripe > .text {
+    #home .user-stripe > .chef > .text {
         margin-left: 300px;
         padding: 40px 40px;
         flex: 1;
@@ -131,7 +122,7 @@
         transition: opacity 0.2s linear;
     }
     
-    #home .user-stripe > .image {
+    #home .user-stripe > .chef > .image {
         position: absolute;
         margin-left: 100px;
 
@@ -139,7 +130,7 @@
         transition: opacity 0.3s linear 0.3s;
     }
 
-    #home .user-stripe > .image > img {
+    #home .user-stripe > .chef > .image > img {
         max-width: 200px;
         max-height: 200px;
     
@@ -169,7 +160,7 @@
     }
         
     @media (min-width: 839px) {
-        #home .user-stripe:hover > .image {
+        #home .user-stripe:hover > .chef > .image {
             opacity: 1;
             left: 500px;
             transition: left 0.3s ease;
@@ -189,7 +180,7 @@
             margin-left: 300px;
         }
 
-        #home .user-stripe > .image {
+        #home .user-stripe > .chef > .image {
             opacity: 1;
             left: 0;
             transition: left 0.3s ease;
@@ -207,7 +198,7 @@
             width: 1000px;
         }
 
-        #home .user-stripe:hover > .image {
+        #home .user-stripe:hover > .chef > .image {
             opacity: 1;
             left: 700px;
             transition: left 0.3s ease;
@@ -218,7 +209,7 @@
             transition: left 0.3s ease;
         }
 
-        #home .user-stripe > .image {
+        #home .user-stripe > .chef > .image {
             opacity: 1;
             left: 0;
             transition: left 0.3s ease;
@@ -230,7 +221,7 @@
             transition: left 0.3s ease;
         }
 
-        #home .user-stripe > .text {
+        #home .user-stripe > .chef > .text {
             padding: 40px 60px;
         }
         

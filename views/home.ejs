@@ -10,22 +10,24 @@
                     <div id="user-<%= index %>" class="user-stripe my-2" onmouseover="getRandChefRecipes();">
 
                         <!-- Image -->
-                        <div class="image">
-                            <img src="<%= user.imageUrl %>">
-                        </div>
+                        <div class="chef">
+                            <div class="image">
+                                <img src="<%= user.imageUrl %>">
+                            </div>
 
-                        <!-- Text -->
-                        <div class="text">
+                            <!-- Text -->
+                            <div class="text">
 
-                            <!-- Name -->
-                            <h2 class="name">
-                                <%= user.displayname %>
-                            </h2>
+                                <!-- Name -->
+                                <h2 class="name">
+                                    <%= user.displayname %>
+                                </h2>
 
-                            <!-- Description -->
-                            <p class="description">
-                                <%= user.description %>
-                            </p>
+                                <!-- Description -->
+                                <p class="description">
+                                    <%= user.description %>
+                                </p>
+                            </div>
                         </div>
 
                         <!-- Recipe info -->
