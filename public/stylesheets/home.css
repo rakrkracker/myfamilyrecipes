@@ -27,19 +27,19 @@
         background-color: rgba(255, 255, 255, 0.2);
         backdrop-filter: blur(5px);
 
-        height: 390px;
-        width: 600px;
+        height: 350px;
+        width: 100%;
         border-radius: 5px;
 
         padding: 30px;
     }
 
     #home .user-stripe > .recipe {
-        height: 260px;
+        height: 190px;
         left: 0;
-        top: 130px;
+        top: 160px;
 
-        padding: 30px;
+        padding: 0 30px 30px 30px;
     }
     
     #home .user-stripe > .text {
@@ -49,8 +49,8 @@
     }
     
     #home .user-stripe > .recipe > .recipe-text {
-        left: 230px;
-        padding: 10px 40px;
+        margin-left: 160px;
+        padding: 10px 30px;
         flex: 1;
         position: absolute;
     }
@@ -71,8 +71,8 @@
     }
 
     #home .user-stripe > .recipe > .recipe-image > img {
-        max-width: 200px;
-        max-height: 200px;
+        max-width: 160px;
+        max-height: 160px;
 
         border-radius: 5px;
     }
