@@ -10,7 +10,7 @@ function getRandChefRecipes() {
 
         // Get fields to update
         const link = document.querySelector(`#user-${index}-recipe-link`);
-        const image = document.querySelector(`#user-${index} .info .recipe .image`);
+        const image = document.querySelector(`#user-${index} .recipe-image img`);
         const title = document.querySelector(`#user-${index} .recipe-text .title`);
         const description = document.querySelector(`#user-${index}  .recipe-text .description`);
 
@@ -24,3 +24,8 @@ function getRandChefRecipes() {
         description.innerHTML = chosenRecipe.description;
     }
 }
+
+
+// If touchscreen, load recipes on start
+const hasMouse = window.matchMedia('(hover: none)');
+if (hasMouse.matches) getRandChefRecipes();
